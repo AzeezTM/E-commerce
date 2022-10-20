@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { Audio } from  'react-loader-spinner'
 import './App.css';
+import Navbar from "./component/Navbar"
+import { Route, Routes} from 'react-router-dom';
+import Products from './component/products';
+import Home from './component/Home';
+import Product from './component/Product';
+
+
+
+
+
+// const Home = React.lazy(() => import("./component/Home"))
+// const Product = React.lazy(() => import("./component/Product"))
+// const Products = React.lazy(() => import("./component/products"))
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {/* <Suspense fallback={<Home/>}> */}
+    
+    <Navbar/>
+     <Routes>
+     <Route  path='/' element={<Home/>}/>
+      <Route  path='products' element={<Product/>} />  
+      <Route  path='products/:id' element={<Products/>} />  
+      </Routes> 
+      
+    {/* </Suspense> */}
+     
+   
+    </>
   );
 }
 
